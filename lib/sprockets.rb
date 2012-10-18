@@ -24,6 +24,7 @@ module Sprockets
   autoload :SassImporter,            "sprockets/sass_importer"
   autoload :SassTemplate,            "sprockets/sass_template"
   autoload :ScssTemplate,            "sprockets/scss_template"
+  autoload :HandlebarsTemplate,      "sprockets/handlebars_template"
 
   # Internal utilities
   autoload :ArgumentError,           "sprockets/errors"
@@ -93,16 +94,18 @@ module Sprockets
   register_engine '.coffee', Tilt::CoffeeScriptTemplate
 
   # JST engines
-  register_engine '.jst',    JstProcessor
-  register_engine '.eco',    EcoTemplate
-  register_engine '.ejs',    EjsTemplate
+  register_engine '.jst',       JstProcessor
+  register_engine '.eco',       EcoTemplate
+  register_engine '.ejs',       EjsTemplate
 
   # CSS engines
-  register_engine '.less',   Tilt::LessTemplate
-  register_engine '.sass',   SassTemplate
-  register_engine '.scss',   ScssTemplate
+  register_engine '.less',      Tilt::LessTemplate
+  register_engine '.sass',      SassTemplate
+  register_engine '.scss',      ScssTemplate
 
   # Other
-  register_engine '.erb',    Tilt::ERBTemplate
-  register_engine '.str',    Tilt::StringTemplate
+  register_engine '.erb',       Tilt::ERBTemplate
+  register_engine '.str',       Tilt::StringTemplate
+  register_engine 'handlebars', ::Sprockets::HandlebarsTemplate
+  register_engine 'hbs',        ::Sprockets::HandlebarsTemplate
 end
