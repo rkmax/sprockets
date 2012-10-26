@@ -18,7 +18,7 @@ module Sprockets
 
     # Compile template data
     def evaluate(scope, locals, &block)
-      "Ember.TEMPLATES['#{scope.logical_path.split("/")[1..-1].join("/")}']=#{data.to_json};\n"
+      "Ember.TEMPLATES['#{scope.logical_path.split("/")[1..-1].join("/")}']=Ember.Handlebars.compile(#{data.to_json});\n"
     end
   end
 end
